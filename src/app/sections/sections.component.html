@@ -1,16 +1,19 @@
 <h2>My Sections</h2>
+<div>
+    <label>Section name:
+        <input #sectionName />
+    </label>
+    <button (click)="add(sectionName.value); sectionName.value=''">
+        add
+    </button>
+</div>
 <ul class="sections">
-    <li [class.selected]="section === selectedSection" *ngFor="let section of sections" (click)="onSelect(section)">
-        <span class="badge">{{section.id}}</span> {{section.name}}
+    <li *ngFor="let section of sections">
+        <a routerLink="/detail/{{section.id}}">
+            <span class="badge">{{section.id}}</span> {{section.name}}
+        </a>
+        <button class="delete" title="delete section" (click)="delete(section)">x</button>
     </li>
 </ul>
 
-<div *ngIf="selectedSection">
-    <h2>{{selectedSection.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedSection.id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="selectedSection.name" placeholder="name" />
-        </label>
-    </div>
-</div>
+<!-- <app-section-detail [section]="selectedSection"></app-section-detail> !-->

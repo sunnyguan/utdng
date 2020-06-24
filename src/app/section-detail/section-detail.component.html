@@ -1,0 +1,14 @@
+<div *ngIf="section">
+
+    <h2>{{section.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{section.id}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="section.name" placeholder="name" />
+        </label>
+    </div>
+
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+
+</div>
