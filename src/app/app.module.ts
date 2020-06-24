@@ -24,10 +24,10 @@ import { SectionSearchComponent } from './section-search/section-search.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
+    HttpClientModule
+    /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false} 
-    )
+    )*/
   ],
   providers: [],
   bootstrap: [AppComponent]

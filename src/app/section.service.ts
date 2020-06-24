@@ -11,9 +11,26 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class SectionService {
   private sectionsUrl = "api/sections";
 
+  httpOptions2 = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   getSections(): Observable<Section[]> {
     // this.log('SectionService: fetched sections');
-    return this.http.get<Section[]>(this.sectionsUrl).pipe(tap(_ => this.log('fetched sections')), catchError(this.handleError<Section[]>('getSections', [])));
+    var a = this.http.get<Section[]>("http://salty-cove-22105.herokuapp.com/api/coursetest?query=govt 2306");
+    console.log(a);
+    return a;
+
+    /*const sections = [
+      { id: 11, name: "Govt 2305" },
+      { id: 12, name: "Govt 2306" },
+      { id: 13, name: "Ecs 3390" },
+      { id: 14, name: "Cs 1200" },
+      { id: 15, name: "Ecs 1100" },
+      { id: 16, name: "Math 3323" },
+      { id: 17, name: "Cs 33455" }
+    ];
+    return of(sections);*/
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
