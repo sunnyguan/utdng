@@ -3,6 +3,7 @@ import { Section } from '../section';
 import { SectionService } from '../section.service';
 import { MessageService } from '../message.service';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-sections',
@@ -12,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SectionsComponent implements OnInit {
   sections: Section[];
   selectedSection: Section;
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private route: ActivatedRoute, private sectionService: SectionService, private messageService: MessageService) { }
 
@@ -26,20 +28,41 @@ export class SectionsComponent implements OnInit {
 
   getSections(): void {
     const query = this.route.snapshot.paramMap.get('query');
-    this.sectionService.getSections(query).subscribe(sections => this.sections = sections);
+    this.isLoading$.next(true);
+    this.sectionService.getSections(query).subscribe(
+      (data) => {
+        this.sections = data;
+        this.isLoading$.next(false);
+      }
+    );
   }
 
   add(name: string): void {
     name = name.trim();
-    if(!name) {
+    if (!name) {
       return;
     }
-    this.sectionService.addSection({ name } as Section).subscribe(section => {this.sections.push(section);});
+    this.sectionService.addSection({ name } as Section).subscribe(section => { this.sections.push(section); });
   }
 
   delete(section: Section): void {
     this.sections = this.sections.filter(h => h !== section);
     this.sectionService.deleteSection(section).subscribe();
+  }
+
+  getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+  comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+  )(this.getCellValue(asc ? a : b, idx), this.getCellValue(asc ? b : a, idx));
+
+  asc:boolean = true;
+  sort(th) {
+    th = event.target || event.srcElement || event.currentTarget;
+    const table = th.closest('table');
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+      .sort(this.comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+      .forEach(tr => table.appendChild(tr));
   }
 
 }
