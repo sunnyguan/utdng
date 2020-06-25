@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private APIUrl = "http://localhost:5000/api/coursetest?query=";
+  private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?query=";
 
   getSections(query: string): Observable<Section[]> {
     const url = `${this.APIUrl}${query}`;
