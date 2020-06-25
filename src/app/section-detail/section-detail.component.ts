@@ -19,8 +19,8 @@ export class SectionDetailComponent implements OnInit {
   }
 
   getSection(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.sectionService.getSection(id).subscribe(section => this.section = section);
+    const sid = this.route.snapshot.paramMap.get('sid');
+    this.sectionService.getSection(sid).subscribe(section => this.section = section);
   }
 
   goBack(): void {

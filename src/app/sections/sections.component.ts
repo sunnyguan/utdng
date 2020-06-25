@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../section';
 import { SectionService } from '../section.service';
 import { MessageService } from '../message.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sections',
@@ -12,7 +13,7 @@ export class SectionsComponent implements OnInit {
   sections: Section[];
   selectedSection: Section;
 
-  constructor(private sectionService: SectionService, private messageService: MessageService) { }
+  constructor(private route: ActivatedRoute, private sectionService: SectionService, private messageService: MessageService) { }
 
   onSelect(section: Section): void {
     this.selectedSection = section;
@@ -24,7 +25,8 @@ export class SectionsComponent implements OnInit {
   }
 
   getSections(): void {
-    this.sectionService.getSections().subscribe(sections => this.sections = sections);
+    const query = this.route.snapshot.paramMap.get('query');
+    this.sectionService.getSections(query).subscribe(sections => this.sections = sections);
   }
 
   add(name: string): void {

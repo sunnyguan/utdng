@@ -4,7 +4,7 @@
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 100%;
 }
 
 .sections li {
@@ -28,7 +28,7 @@
     text-decoration: none;
     position: relative;
     display: block;
-    width: 250px;
+    width: 800px;
 }
 
 .sections a:hover {
@@ -68,8 +68,8 @@ button:hover {
 
 button.delete {
     position: relative;
-    left: 194px;
-    top: -32px;
+    float: right;
+    top: -33.5px;
     background-color: gray !important;
     color: white;
 }

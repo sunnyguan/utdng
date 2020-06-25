@@ -2,13 +2,10 @@
 
     <h2>{{section.name | uppercase}} Details</h2>
     <div><span>id: </span>{{section.id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="section.name" placeholder="name" />
-        </label>
-    </div>
+    <div><span>name: </span>{{section.name}}</div>
+    <div><span>professor: </span>{{section.professor}}</div>
+    <div><span>time: </span>{{section.time}}</div>
 
     <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
 
 </div>

@@ -6,8 +6,8 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'detail/:id', component: SectionDetailComponent },
-  { path: 'sections', component: SectionsComponent },
+  { path: 'detail/:sid', component: SectionDetailComponent },
+  { path: 'sections/:query', component: SectionsComponent },
   { path: 'dashboard', component: DashboardComponent}
 ];
 

@@ -1,16 +1,16 @@
 <h2>My Sections</h2>
-<div>
+<!-- <div>
     <label>Section name:
         <input #sectionName />
     </label>
     <button (click)="add(sectionName.value); sectionName.value=''">
         add
     </button>
-</div>
+</div> -->
 <ul class="sections">
     <li *ngFor="let section of sections">
-        <a routerLink="/detail/{{section.id}}">
-            <span class="badge">{{section.id}}</span> {{section.name}}
+        <a routerLink="/detail/{{section.sid}}">
+            <span class="badge">{{section.sid}}</span> {{section.name}}
         </a>
         <button class="delete" title="delete section" (click)="delete(section)">x</button>
     </li>

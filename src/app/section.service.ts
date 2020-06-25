@@ -10,27 +10,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
+  private APIUrl = "http://localhost:5000/api/coursetest?query=";
 
-  httpOptions2 = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  getSections(query: string): Observable<Section[]> {
+    const url = `${this.APIUrl}${query}`;
+    console.log(query);
+    console.log(url);
 
-  getSections(): Observable<Section[]> {
-    // this.log('SectionService: fetched sections');
-    var a = this.http.get<Section[]>("http://salty-cove-22105.herokuapp.com/api/coursetest?query=govt 2306");
-    console.log(a);
-    return a;
-
-    /*const sections = [
-      { id: 11, name: "Govt 2305" },
-      { id: 12, name: "Govt 2306" },
-      { id: 13, name: "Ecs 3390" },
-      { id: 14, name: "Cs 1200" },
-      { id: 15, name: "Ecs 1100" },
-      { id: 16, name: "Math 3323" },
-      { id: 17, name: "Cs 33455" }
-    ];
-    return of(sections);*/
+    return this.http.get<Section[]>(url).pipe(tap(_ => this.log(`fetched sections for ${query}`)), catchError(this.handleError<Section[]>('getSections', [])));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -42,10 +29,10 @@ export class SectionService {
     };
   }
 
-  getSection(id: number): Observable<Section> {
+  getSection(sid: string): Observable<Section> {
     // this.log(`SectionService: fetched section id=${id}`);
-    const url = `${this.sectionsUrl}/${id}`;
-    return this.http.get<Section>(url).pipe(tap(_ => this.log(`fetched section id=${id}`)), catchError(this.handleError<Section>(`getSection id=${id}`)));
+    const url = `${this.APIUrl}${sid}&single=true`;
+    return this.http.get<Section>(url).pipe(tap(_ => this.log('fetched sections')), catchError(this.handleError<Section>('getSections')));
   }
 
   httpOptions = {

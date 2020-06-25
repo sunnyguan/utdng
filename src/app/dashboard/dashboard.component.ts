@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private sectionService: SectionService) { }
 
   ngOnInit() {
-    this.getSections();
+    //this.getSections();
   }
 
   getSections(): void {
-    this.sectionService.getSections()
-      .subscribe(sections => this.sections = sections.slice(1, 5));
+    /* this.sectionService.getSections("govt 2306")
+      .subscribe(sections => this.sections = sections.slice(1, 5)); */
   }
 }

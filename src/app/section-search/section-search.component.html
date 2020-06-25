@@ -1,7 +1,9 @@
 <div id="search-component">
     <h4><label for="search-box">Section Search</label></h4>
-
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <label>Search: <input type="text" [formControl]="query" (keyup.enter)="search_query()"></label>
+    <!-- <p>Test: {{ query.value }}</p> -->
+    <p><button (click)="search_query()">Submit</button></p>
+    <!-- <input #searchBox id="search-box" (input)="search(searchBox.value)" />
 
     <ul class="search-result">
         <li *ngFor="let section of sections$ | async">
@@ -9,5 +11,5 @@
                 {{section.name}}
             </a>
         </li>
-    </ul>
+    </ul> -->
 </div>
