@@ -10,7 +10,7 @@
 <ul class="sections">
     <li *ngFor="let section of sections">
         <a routerLink="/detail/{{section.sid}}">
-            <span class="badge">{{section.sid}}</span> {{section.name}}
+            <span class="badge">{{section.id}}</span> {{section.name}}
         </a>
         <button class="delete" title="delete section" (click)="delete(section)">x</button>
     </li>
