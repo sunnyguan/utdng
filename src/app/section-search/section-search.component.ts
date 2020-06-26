@@ -39,6 +39,11 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
     this.searchTerms.next(term);
   }
 
+  submitMe(name: string){
+    // (<HTMLInputElement>document.getElementById('search-box')).value = name;
+    this.router.navigate([`/sections/${name}`])
+  }
+
   ngAfterViewInit() {
     console.log('hi');
     let search = document.getElementsByClassName('search')[0] as HTMLElement;
@@ -46,6 +51,7 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
     let line2 = document.getElementsByClassName('line-2')[0] as HTMLElement;
     search.addEventListener('click', function () {
       search.classList.add('active');
+      search.style.fontSize = '32px';
       line1.style.transform = 'rotate(45deg)';
       line1.style.top = '0px';
       line1.style.left = '0px';
@@ -56,6 +62,7 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
     document.querySelectorAll(".line-1, .line-2").forEach(function (elem) {
       elem.addEventListener("click", function () {
         search.classList.remove('active');
+        search.style.fontSize = '22px';
         line1.style.transform = 'rotate(-45deg)';
         line1.style.top = '-20px';
         line1.style.left = '45px';
