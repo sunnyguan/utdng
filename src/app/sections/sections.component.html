@@ -1,10 +1,13 @@
-<div id="search-component">
-    <h4><label for="search-box">Section Search</label></h4>
-    <label>Search: <input type="text" [formControl]="search_string" (keyup.enter)="search_query()"></label>
-    <p><button (click)="search_query()">Submit</button></p>
-</div>
-<h2>Results for {{ query }}</h2>
-<!-- <div>
+<main>
+
+
+    <div id="search-component">
+        <h4><label for="search-box">Section Search</label></h4>
+        <label>Search: <input type="text" [formControl]="search_string" (keyup.enter)="search_query()"></label>
+        <p><button (click)="search_query()">Submit</button></p>
+    </div>
+    <h2>Results for {{ query }}</h2>
+    <!-- <div>
     <label>Section name:
         <input #sectionName />
     </label>
@@ -12,7 +15,7 @@
         add
     </button>
 </div> -->
-<!-- <ul class="sections">
+    <!-- <ul class="sections">
     <li *ngFor="let section of sections">
         <a routerLink="/detail/{{section.sid}}">
             <span class="badge">{{section.id}}</span> {{section.name}}
@@ -20,86 +23,91 @@
         <button class="delete" title="delete section" (click)="sort($event)">x</button>
     </li>
 </ul> -->
-<div *ngIf="isLoading$ | async">
-    <div class="loader"></div>
-</div>
-<div *ngIf="!(isLoading$ | async) && (!sections || sections[0].hasOwnProperty('bad'))">No Results Found.</div>
-<table *ngIf="!(isLoading$ | async) && !sections[0].hasOwnProperty('bad')" id="content-table3" class="table-responsive-full sort-table">
-    <thead>
-        <tr>
-            <th class="id md-remove" (click)="sort($event)">Id
-                <i class="fa fa-fw fa-sort"></i>
-               <!--  <div class="sort-table-arrows">
+    <div *ngIf="isLoading$ | async">
+        <div class="loader"></div>
+    </div>
+    <div *ngIf="!(isLoading$ | async) && (!sections || sections[0].hasOwnProperty('bad'))">No Results Found.</div>
+    <table *ngIf="!(isLoading$ | async) && !sections[0].hasOwnProperty('bad')" id="content-table3"
+        class="table-responsive-full sort-table">
+        <thead>
+            <tr>
+                <th class="id md-remove" (click)="sort($event)">Id
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!--  <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                         class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                                 class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
-            <th class="name" (click)="sort($event)">Name
-                <i class="fa fa-fw fa-sort"></i>
-                <!-- <div class="sort-table-arrows">
+                </th>
+                <th class="name" (click)="sort($event)">Name
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!-- <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                         class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                                 class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
-            <th class="professor md-remove" (click)="sort($event)">Professor
-                <i class="fa fa-fw fa-sort"></i>
-                <!-- <div class="sort-table-arrows">
+                </th>
+                <th class="professor md-remove" (click)="sort($event)">Professor
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!-- <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button
                         class="button"><i class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button
                             class="button"><i class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
-            <th class="professor_gpa" (click)="sort($event)">GPA
-                <i class="fa fa-fw fa-sort"></i>
-                <!-- <div class="sort-table-arrows">
+                </th>
+                <th class="professor_gpa" (click)="sort($event)">GPA
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!-- <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button
                         class="button"><i class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button
                             class="button"><i class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
-            <th class="professor_rating" (click)="sort($event)">Rating
-                <i class="fa fa-fw fa-sort"></i>
-                <!-- <div class="sort-table-arrows">
+                </th>
+                <th class="professor_rating" (click)="sort($event)">Rating
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!-- <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button
                         class="button"><i class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button
                             class="button"><i class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
-            <th class="time md-remove" (click)="sort($event)">Time
-                <i class="fa fa-fw fa-sort"></i>
-                <!-- <div class="sort-table-arrows">
+                </th>
+                <th class="time md-remove" (click)="sort($event)">Time
+                    <i class="fa fa-fw fa-sort"></i>
+                    <!-- <div class="sort-table-arrows">
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                         class="fa fa-chevron-up"></i></button></a>
                     <a [routerLink]="" (click)="sort($event)"><button class="button"><i
                                 class="fa fa-chevron-down"></i></button></a>
                 </div> -->
-            </th>
+                </th>
+            </tr>
+        </thead>
+        <tr *ngFor="let section of sections">
+            <td data-label="id" class="id">{{ section.id }}</td>
+            <td data-label="name" class="name">{{ section.name.split("(")[0] }}</td>
+            <td data-label="professor" class="professor">
+                <a *ngIf="section.professor != '-Staff-'"
+                    href="{{ 'https://profiles.utdallas.edu/browse?search=' + section.professor}}">{{ section.professor }}</a>
+                <span *ngIf="section.professor == '-Staff-'">{{ section.professor }}</span>
+            </td>
+            <td data-label="professor gpa" class="professor_gpa">
+                <a *ngIf="section.professor_gpa != '0 Records Found'"
+                    href="{{'https://saitanayd.github.io/utd-grades/?prof=' + section.professor}}">{{ section.professor_gpa }}</a>
+                <span *ngIf="section.professor_gpa == '0 Records Found'">{{ section.professor_gpa }}</span>
+            </td>
+            <td data-label="professor rating" class="professor_rating">
+                <a *ngIf="section.professor_link != '0 Records Found'"
+                    href="{{'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=' + section.professor_link}}">{{ section.professor_rating }}</a>
+                <span *ngIf="section.professor_link == '0 Records Found'">{{ section.professor }}</span>
+            </td>
+            <td data-label="time" class="time">{{ section.time }}</td>
         </tr>
-    </thead>
-    <tr *ngFor="let section of sections">
-        <td data-label="id" class="id">{{ section.id }}</td>
-        <td data-label="name" class="name">{{ section.name.split("(")[0] }}</td>
-        <td data-label="professor" class="professor">
-            <a *ngIf="section.professor != '-Staff-'" href="{{ 'https://profiles.utdallas.edu/browse?search=' + section.professor}}">{{ section.professor }}</a>
-            <span *ngIf="section.professor == '-Staff-'" >{{ section.professor }}</span>
-        </td>
-        <td data-label="professor gpa" class="professor_gpa">
-            <a *ngIf="section.professor_gpa != '0 Records Found'" href="{{'https://saitanayd.github.io/utd-grades/?prof=' + section.professor}}">{{ section.professor_gpa }}</a>
-            <span *ngIf="section.professor_gpa == '0 Records Found'">{{ section.professor_gpa }}</span>
-        </td>
-        <td data-label="professor rating" class="professor_rating">
-            <a *ngIf="section.professor_link != '0 Records Found'" href="{{'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=' + section.professor_link}}">{{ section.professor_rating }}</a>
-            <span *ngIf="section.professor_link == '0 Records Found'">{{ section.professor }}</span>
-        </td>
-        <td data-label="time" class="time">{{ section.time }}</td>
-    </tr>
-</table>
+    </table>
 
-<!-- <app-section-detail [section]="selectedSection"></app-section-detail> !-->
+    <!-- <app-section-detail [section]="selectedSection"></app-section-detail> !-->
+</main>
