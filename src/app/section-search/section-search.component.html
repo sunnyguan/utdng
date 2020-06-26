@@ -1,4 +1,4 @@
-<div id="search-component">
+<!-- <div id="search-component">
     <h4><label for="search-box">Section Search</label></h4>
     <label>Search: <input type="text" [formControl]="query" (keyup.enter)="search_query()"></label>
     <p>Test: {{ query.value }}</p>
@@ -12,4 +12,29 @@
             </a>
         </li>
     </ul>
-</div>
+</div> -->
+
+<!-- <div id="search-component">
+    <h4><label for="search-box">Section Search</label></h4>
+  
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let section of sections$ | async" >
+        <a href="sections/{{section.name}}">{{section.name}} | {{section.sid}}</a>
+      </li>
+    </ul>
+  </div>
+ -->
+  <div id="body">
+    <main>
+      <input (click)="opened=true" #searchBox type="text" class="search" id="search-box" [formControl]="query" (keyup.enter)="search_query()" (input)="search(searchBox.value)" />
+      <ul [hidden]="!opened" [@panelInOut] class="search-result">
+        <li *ngFor="let section of sections$ | async" >
+          <a href="sections/{{section.name}}">{{section.name}} | {{section.sid}}</a>
+        </li>
+      </ul>
+      <div class="line-1" (click)="opened=false"></div>
+      <div class="line-2" (click)="opened=false"></div>
+    </main>
+  </div>

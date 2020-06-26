@@ -11,6 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class SectionService {
   private sectionsUrl = "api/sections";
   private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?query=";
+  private searchURL = "https://salty-cove-22105.herokuapp.com/api/smart";
 
   getSections(query: string): Observable<Section[]> {
     const url = `${this.APIUrl}${query}`;
@@ -58,7 +59,7 @@ export class SectionService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Section[]>(`${this.sectionsUrl}/?name=${term}`).pipe(
+    return this.http.get<Section[]>(`${this.searchURL}?query=${term}`).pipe(
       tap(x => x.length ?
         this.log(`found sections matching "${term}"`) :
         this.log(`no sections matching "${term}"`)),

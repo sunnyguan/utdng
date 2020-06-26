@@ -6,7 +6,7 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 import { SectionSearchComponent } from './section-search/section-search.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/smart', pathMatch: 'full' },
   { path: 'detail/:sid', component: SectionDetailComponent },
   { path: 'sections/:query', component: SectionsComponent },
   { path: 'dashboard', component: DashboardComponent },
