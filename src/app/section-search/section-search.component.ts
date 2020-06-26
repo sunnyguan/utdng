@@ -32,10 +32,10 @@ export class SectionSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* this.sections$ = this.searchTerms.pipe(
+    this.sections$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => this.sectionService.searchSections(term)),
-    ); */
+    );
   }
 }
