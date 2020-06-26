@@ -55,7 +55,8 @@ table thead tr {border-bottom:3px solid #0085a6; color:#000;}
 table tfoot tr {border-top:3px solid #0085a6;}
 table thead th, table tfoot th {
 	background-color:#fff;
-	color:#000;
+    color:#000;
+    cursor: pointer;
 	font-size:.83333em;
 	line-height:1.8;
 	padding: 15px 14px 13px 14px;
@@ -121,7 +122,10 @@ caption {font-size:1.111em; font-weight:300; padding:10px 0;}
 		text-transform: uppercase;
 		width: 100%;
 		white-space:nowrap;
-	}
+    }
+    .md-remove {
+        display: none !important;
+    }
 }
 @media (max-width: 400px) {
 	.table-responsive-full td {padding-left:14px;}

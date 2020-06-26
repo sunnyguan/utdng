@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../section';
 import { SectionService } from '../section.service';
 import { MessageService } from '../message.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sections',
@@ -12,10 +13,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SectionsComponent implements OnInit {
   sections: Section[];
+  query: string;
+  search_string = new FormControl('');
   selectedSection: Section;
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private route: ActivatedRoute, private sectionService: SectionService, private messageService: MessageService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private sectionService: SectionService, private messageService: MessageService) { }
 
   onSelect(section: Section): void {
     this.selectedSection = section;
@@ -23,13 +26,14 @@ export class SectionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const query = this.route.snapshot.paramMap.get('query');
+    this.query = query;
     this.getSections();
   }
 
   getSections(): void {
-    const query = this.route.snapshot.paramMap.get('query');
     this.isLoading$.next(true);
-    this.sectionService.getSections(query).subscribe(
+    this.sectionService.getSections(this.query).subscribe(
       (data) => {
         this.sections = data;
         this.isLoading$.next(false);
@@ -63,6 +67,12 @@ export class SectionsComponent implements OnInit {
     Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
       .sort(this.comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
       .forEach(tr => table.appendChild(tr));
+  }
+
+  search_query(){
+    this.query = this.search_string.value;
+    this.router.navigate([`/sections/${this.search_string.value}`]);
+    this.getSections();
   }
 
 }
