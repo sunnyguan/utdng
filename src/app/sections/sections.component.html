@@ -83,10 +83,19 @@
     </thead>
     <tr *ngFor="let section of sections">
         <td data-label="id" class="id">{{ section.id }}</td>
-        <td data-label="name" class="name">{{ section.name }}</td>
-        <td data-label="professor" class="professor">{{ section.professor }}</td>
-        <td data-label="professor gpa" class="professor_gpa">{{ section.professor_gpa }}</td>
-        <td data-label="professor rating" class="professor_rating">{{ section.professor_rating }}</td>
+        <td data-label="name" class="name">{{ section.name.split("(")[0] }}</td>
+        <td data-label="professor" class="professor">
+            <a *ngIf="section.professor != '-Staff-'" href="{{ 'https://profiles.utdallas.edu/browse?search=' + section.professor}}">{{ section.professor }}</a>
+            <span *ngIf="section.professor == '-Staff-'" >{{ section.professor }}</span>
+        </td>
+        <td data-label="professor gpa" class="professor_gpa">
+            <a *ngIf="section.professor_gpa != '0 Records Found'" href="{{'https://saitanayd.github.io/utd-grades/?prof=' + section.professor}}">{{ section.professor_gpa }}</a>
+            <span *ngIf="section.professor_gpa == '0 Records Found'">{{ section.professor_gpa }}</span>
+        </td>
+        <td data-label="professor rating" class="professor_rating">
+            <a *ngIf="section.professor_link != '0 Records Found'" href="{{'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=' + section.professor_link}}">{{ section.professor_rating }}</a>
+            <span *ngIf="section.professor_link == '0 Records Found'">{{ section.professor }}</span>
+        </td>
         <td data-label="time" class="time">{{ section.time }}</td>
     </tr>
 </table>
