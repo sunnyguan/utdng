@@ -2,9 +2,27 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
+## Install Angular
+
+Run following command line to install Angular CLI
+
+```
+npm install -g @angular/cli
+```
+
+Run following command line to install `@angular-devkit/build-angular` as dev dependency. This package is newly introduced in Angular 6.0
+
+```
+npm install --save-dev @angular-devkit/build-angular
+```
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
 
 ## Code scaffolding
 
