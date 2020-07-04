@@ -31,7 +31,7 @@ small {
 button {
 	bottom: 1px;
 	cursor: pointer;
-	margin-right: 8px;
+	/* margin-right: 8px; */
 	position: relative;
 	padding: 4px 11px;
 	border: 1px solid #0085a6;
@@ -46,6 +46,53 @@ button:hover {
 	background: #0085a6;
 	color: #fff;
 }
+
+#submit {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.search {
+	width: 100%;
+	position: relative;
+	display: flex;
+}
+
+.searchTerm {
+	width: 100%;
+	border: 3px solid #00B4CC;
+	border-right: none;
+	padding: 5px;
+	height: 100%;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	color: #9DBFAF;
+}
+
+.searchTerm:focus {
+	/* color: #00B4CC; */
+}
+
+.searchButton {
+	width: 40px;
+	height: 100%;
+	border: 1px solid #00B4CC;
+	background: #00B4CC;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!
+  .wrap{
+	width: 30%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }*/
 
 /* Tables */
 
@@ -278,16 +325,18 @@ caption {
 		margin-bottom: 20px !important;
 	}
 }
-
+.outer {
+	text-align: center;
+}
 .loader {
 	display: inline-block;
 	text-align: center;
+	width: 60px;
 	border: 8px solid #f3f3f3;
 	/* Light grey */
 	border-top: 8px solid #3498db;
 	/* Blue */
 	border-radius: 50%;
-	width: 60px;
 	height: 60px;
 	animation: spin 2s linear infinite;
 }
