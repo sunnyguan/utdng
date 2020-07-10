@@ -8,12 +8,13 @@
     </div> -->
     <div class="wrap">
         <div class="search">
-           <input type="text" [formControl]="search_string" (keyup.enter)="search_query()" class="searchTerm" placeholder="What are you looking for?">
-           <button type="submit" (click)="search_query()" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
+            <input type="text" [formControl]="search_string" (keyup.enter)="search_query()" class="searchTerm"
+                placeholder="What are you looking for?">
+            <button type="submit" (click)="search_query()" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
         </div>
-     </div>
+    </div>
     <h2 style="text-align: center;">Results for {{ query }}</h2>
     <!-- <div>
     <label>Section name:
@@ -41,63 +42,31 @@
             <tr>
                 <th class="id md-remove" (click)="sort($event)">Id
                     <i class="fa fa-fw fa-sort"></i>
-                    <!--  <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                        class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                                class="fa fa-chevron-down"></i></button></a>
-                </div> -->
                 </th>
                 <th class="name" (click)="sort($event)">Name
                     <i class="fa fa-fw fa-sort"></i>
-                    <!-- <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                        class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                                class="fa fa-chevron-down"></i></button></a>
-                </div> -->
+                </th>
+                <th class="status" (click)="sort($event)">Status
+                    <i class="fa fa-fw fa-sort"></i>
                 </th>
                 <th class="professor md-remove" (click)="sort($event)">Professor
                     <i class="fa fa-fw fa-sort"></i>
-                    <!-- <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button
-                        class="button"><i class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button
-                            class="button"><i class="fa fa-chevron-down"></i></button></a>
-                </div> -->
                 </th>
                 <th class="professor_gpa" (click)="sort($event)">GPA
                     <i class="fa fa-fw fa-sort"></i>
-                    <!-- <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button
-                        class="button"><i class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button
-                            class="button"><i class="fa fa-chevron-down"></i></button></a>
-                </div> -->
                 </th>
                 <th class="professor_rating" (click)="sort($event)">Rating
                     <i class="fa fa-fw fa-sort"></i>
-                    <!-- <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button
-                        class="button"><i class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button
-                            class="button"><i class="fa fa-chevron-down"></i></button></a>
-                </div> -->
                 </th>
                 <th class="time md-remove" (click)="sort($event)">Time
                     <i class="fa fa-fw fa-sort"></i>
-                    <!-- <div class="sort-table-arrows">
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                        class="fa fa-chevron-up"></i></button></a>
-                    <a [routerLink]="" (click)="sort($event)"><button class="button"><i
-                                class="fa fa-chevron-down"></i></button></a>
-                </div> -->
                 </th>
             </tr>
         </thead>
         <tr *ngFor="let section of sections">
             <td data-label="id" class="id">{{ section.id }}</td>
             <td data-label="name" class="name">{{ section.name.split("(")[0] }}</td>
+            <td data-label="name" class="name">{{ section.status }}</td>
             <td data-label="professor" class="professor">
                 <a *ngIf="section.professor != '-Staff-'"
                     href="{{ 'https://profiles.utdallas.edu/browse?search=' + section.professor}}">{{ section.professor }}</a>

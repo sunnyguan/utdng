@@ -7,4 +7,5 @@ export interface Section {
     professor_rating: string;
     sid: string;
     time: string;
+    status: string;
 }
