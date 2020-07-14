@@ -11,10 +11,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class SectionService {
   private sectionsUrl = "api/sections";
   private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?query=";
+  private scheduleURL = "https://salty-cove-22105.herokuapp.com/api/schedule?query=";
   private searchURL = "https://salty-cove-22105.herokuapp.com/api/smart";
 
   getSections(query: string): Observable<Section[]> {
-    const url = `${this.APIUrl}${query}`;
+    var url: string = `${this.APIUrl}${query}`;
+    if (query == "secretcode") {
+      url = `${this.scheduleURL}${query}`;
+    }
     console.log(query);
     console.log(url);
 
