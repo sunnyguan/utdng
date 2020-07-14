@@ -80,7 +80,7 @@
             <td data-label="professor rating" class="professor_rating">
                 <a *ngIf="section.professor_link != '0 Records Found'"
                     href="{{'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=' + section.professor_link}}">{{ section.professor_rating }}</a>
-                <span *ngIf="section.professor_link == '0 Records Found'">{{ section.professor }}</span>
+                <span *ngIf="section.professor_link == '0 Records Found'">{{ section.professor_rating }}</span>
             </td>
             <td data-label="time" class="time">{{ section.time }}</td>
         </tr>
