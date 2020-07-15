@@ -17,11 +17,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('panelInOut', [
       transition('void => *', [
-        style({opacity: 0}),
-        animate(200 )
+        style({ opacity: 0 }),
+        animate(200)
       ]),
       transition('* => void', [
-        animate(200, style({opacity: 0}))
+        animate(200, style({ opacity: 0 }))
       ])
     ])
   ]
@@ -31,6 +31,22 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
   private searchTerms = new Subject<string>();
   query = new FormControl('');
   opened: boolean = false;
+  images: string[] = ['https://alumni.utdallas.edu/image/-wallpaper/BSB-Ext-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/ATEC-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/Founders-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/Founders-fountain-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/JSOM-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/NSERL-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/PS3-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/RH-West-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/UTD-Mall-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/SSB-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/ECS-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/Trellis-Evening-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/UTD-Drive-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/Visitors-Center-1920.jpg',
+    'https://alumni.utdallas.edu/image/-wallpaper/BSB-Int-1920.jpg']
+
 
   constructor(private router: Router, private route: ActivatedRoute, private sectionService: SectionService) { }
 
@@ -39,7 +55,7 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
     this.searchTerms.next(term);
   }
 
-  submitMe(name: string){
+  submitMe(name: string) {
     // (<HTMLInputElement>document.getElementById('search-box')).value = name;
     this.router.navigate([`/sections/${name}`])
   }
@@ -70,6 +86,10 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
         line2.style.opacity = '0';
       });
     });
+
+    var val = Math.floor(Math.random() * (this.images.length - 1) + 1);
+    // (<HTMLImageElement>document.getElementById("body")).src=this.images[val];
+    document.getElementById("body").style.backgroundImage = `url('${this.images[val]}')`;
   }
 
   search_query(): void {

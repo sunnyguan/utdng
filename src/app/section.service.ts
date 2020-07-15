@@ -10,18 +10,21 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?query=";
+  private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?";
   private scheduleURL = "https://salty-cove-22105.herokuapp.com/api/schedule?query=";
   private searchURL = "https://salty-cove-22105.herokuapp.com/api/smart";
 
   getSections(query: string): Observable<Section[]> {
-    var url: string = `${this.APIUrl}${query}`;
+    var url: string = `${this.APIUrl}`;
+    query.split(",").forEach(function (item, index) {
+      url += `query=${item}&`;
+      console.log(url);
+    });
     if (query == "secretcode") {
       url = `${this.scheduleURL}${query}`;
     }
     console.log(query);
-    console.log(url);
-
+    
     return this.http.get<Section[]>(url).pipe(tap(_ => this.log(`fetched sections for ${query}`)), catchError(this.handleError<Section[]>('getSections', [])));
   }
 
@@ -34,6 +37,7 @@ export class SectionService {
     };
   }
 
+  // TODO fix backend API
   getSection(sid: string): Observable<Section> {
     // this.log(`SectionService: fetched section id=${id}`);
     const url = `${this.APIUrl}${sid}&single=true`;
