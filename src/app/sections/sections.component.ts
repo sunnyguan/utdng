@@ -60,7 +60,7 @@ export class SectionsComponent implements OnInit {
     v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
   )(this.getCellValue(asc ? a : b, idx), this.getCellValue(asc ? b : a, idx));
 
-  asc:boolean = true;
+  asc: boolean = true;
   sort(th) {
     th = event.target || event.srcElement || event.currentTarget;
     const table = th.closest('table');
@@ -69,7 +69,7 @@ export class SectionsComponent implements OnInit {
       .forEach(tr => table.appendChild(tr));
   }
 
-  search_query(){
+  search_query() {
     this.query = this.search_string.value;
     this.router.navigate([`/sections/${this.search_string.value}`]);
     this.getSections();

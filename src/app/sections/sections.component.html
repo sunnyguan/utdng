@@ -43,6 +43,9 @@
                 <th class="id md-remove" (click)="sort($event)">Id
                     <i class="fa fa-fw fa-sort"></i>
                 </th>
+                <th class="number md-remove" (click)="sort($event)">Number
+                    <i class="fa fa-fw fa-sort"></i>
+                </th>
                 <th class="name md-remove" (click)="sort($event)">Name
                     <i class="fa fa-fw fa-sort"></i>
                 </th>
@@ -65,8 +68,9 @@
         </thead>
         <tr *ngFor="let section of sections">
             <td data-label="id" class="id">{{ section.id }}</td>
+            <td data-label="number" class="number">{{ section.sid }}</td>
             <td data-label="name" class="name">{{ section.name.split("(")[0] }}</td>
-            <td data-label="name" class="name">{{ section.status }}</td>
+            <td data-label="mode" class="mode">{{ section.status }}</td>
             <td data-label="professor" class="professor">
                 <a *ngIf="section.professor != '-Staff-'"
                     href="{{ 'https://profiles.utdallas.edu/browse?search=' + section.professor}}">{{ section.professor }}</a>
