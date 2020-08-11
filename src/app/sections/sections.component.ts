@@ -35,6 +35,7 @@ export class SectionsComponent implements OnInit {
     this.isLoading$.next(true);
     this.sectionService.getSections(this.query).subscribe(
       (data) => {
+        console.log(data);
         this.sections = data;
         this.isLoading$.next(false);
       }

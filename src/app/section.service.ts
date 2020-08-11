@@ -17,6 +17,8 @@ export class SectionService {
   getSections(query: string): Observable<Section[]> {
     var url: string = `${this.APIUrl}`;
     query.split(",").forEach(function (item, index) {
+      if(item.startsWith("CS "))
+        item = "CS" + item.substr(3)
       url += `query=${item}&`;
       console.log(url);
     });
@@ -30,8 +32,8 @@ export class SectionService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
+      // no result
+      // console.error(error); // log to console instead
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };

@@ -328,6 +328,9 @@ caption {
 .outer {
 	text-align: center;
 }
+.noresult {
+	text-align: center;
+}
 .loader {
 	display: inline-block;
 	text-align: center;

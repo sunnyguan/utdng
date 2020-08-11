@@ -57,8 +57,6 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
 
   submitMe(name: string) {
     // (<HTMLInputElement>document.getElementById('search-box')).value = name;
-    if(name.startsWith("CS "))
-      name = "CS" + name.substr(3);
     this.router.navigate([`/sections/${name}`])
   }
 

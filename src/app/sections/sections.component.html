@@ -35,8 +35,8 @@
     <div class="outer" *ngIf="isLoading$ | async">
         <div class="loader"></div>
     </div>
-    <div *ngIf="!(isLoading$ | async) && (!sections || sections[0].hasOwnProperty('bad'))">No Results Found.</div>
-    <table *ngIf="!(isLoading$ | async) && !sections[0].hasOwnProperty('bad')" id="content-table3"
+    <div class="noresult" *ngIf="!(isLoading$ | async) && (!sections || sections.length == 0)">No Results Found.</div>
+    <table *ngIf="!(isLoading$ | async) && sections.length != 0" id="content-table3"
         class="table-responsive-full sort-table">
         <thead>
             <tr>
