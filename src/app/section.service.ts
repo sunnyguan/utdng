@@ -10,9 +10,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private APIUrl = "https://salty-cove-22105.herokuapp.com/api/coursetest?";
-  private scheduleURL = "https://salty-cove-22105.herokuapp.com/api/schedule?query=";
-  private searchURL = "https://salty-cove-22105.herokuapp.com/api/smart";
+  private APIUrl = "https://411ca35965f7.ngrok.io/api/coursetest?";
+  private scheduleURL = "https://411ca35965f7.ngrok.io/api/schedule?query=";
+  private searchURL = "https://411ca35965f7.ngrok.io/api/smart";
 
   getSections(query: string): Observable<Section[]> {
     var url: string = `${this.APIUrl}`;
