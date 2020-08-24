@@ -90,6 +90,7 @@ export class SectionSearchComponent implements OnInit, AfterViewInit {
     var val = Math.floor(Math.random() * (this.images.length - 1) + 1);
     // (<HTMLImageElement>document.getElementById("body")).src=this.images[val];
     document.getElementById("body").style.backgroundImage = `url('${this.images[val]}')`;
+    document.getElementById("body").style.backgroundSize = 'cover';
   }
 
   search_query(): void {
