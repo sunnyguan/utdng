@@ -32,7 +32,7 @@
       [formControl]="query" (keyup.enter)="search_query()" (input)="search(searchBox.value)" />
     <ul [hidden]="!opened" [@panelInOut] class="search-result">
       <li *ngFor="let section of sections$ | async">
-        <a href="sections/{{section.name}}" (click)="submitMe(section.name)">{{section.name}}&#9;{{section.sid}}</a>
+        <a href="sections/{{section.name}}">{{section.name}}&#9;{{section.sid}}</a>
       </li>
     </ul>
     <div class="line-1" (click)="opened=false"></div>
