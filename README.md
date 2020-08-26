@@ -2,9 +2,11 @@
 
 This is the Angular version of [UTDRMP](http://utdrmp.herokuapp.com). This new version includes better mobile support, autocomplete, and better sorting front-end and back-end separation. 
 
-![Mobile](https://raw.githubusercontent.com/sunnyguan/utdng/master/mobile.gif)
+Mobile             |  Desktop|
+:-------------------------:|:-------------------------:|
+![Mobile](https://raw.githubusercontent.com/sunnyguan/utdng/master/mobile.gif)  |  ![Desktop](https://raw.githubusercontent.com/sunnyguan/utdng/master/desktop.gif)|
 
-![Desktop](https://raw.githubusercontent.com/sunnyguan/utdng/master/desktop.gif)
+ 
 
 ## Install Angular
 
