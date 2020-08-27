@@ -10,9 +10,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private APIUrl = "https://8c0c5ea4ef87.ngrok.io/api/coursetest?";
-  private scheduleURL = "https://8c0c5ea4ef87.ngrok.io/api/schedule?query=";
-  private searchURL = "https://8c0c5ea4ef87.ngrok.io/api/smart";
+  private prefix = "https://0a47493587cb.ngrok.io/";
+  private APIUrl = prefix + "api/coursetest?";
+  private scheduleURL = prefix + "api/schedule?query=";
+  private searchURL = prefix + "api/smart";
 
   getSections(query: string): Observable<Section[]> {
     var url: string = `${this.APIUrl}`;
