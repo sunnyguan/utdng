@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private prefix = "http://coolapis.herokuapp.com/";
+  private prefix = "http://f4c4d6f053e3.ngrok.io/";
   private APIUrl = this.prefix + "api/coursetest?";
   private scheduleURL = this.prefix + "api/schedule?query=";
   private searchURL = this.prefix + "api/smart";
@@ -78,7 +78,8 @@ export class SectionService {
     );
   }
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(private http: HttpClient, private messageService: MessageService) {
+  }
 
   private log(message: string) {
     this.messageService.add(`SectionService: ${message}`);
