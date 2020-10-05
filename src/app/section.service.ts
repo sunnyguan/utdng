@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SectionService {
   private sectionsUrl = "api/sections";
-  private prefix = "http://f4c4d6f053e3.ngrok.io/";
+  private prefix = "http://coolapis.herokuapp.com/";
   private APIUrl = this.prefix + "api/coursetest?";
   private scheduleURL = this.prefix + "api/schedule?query=";
   private searchURL = this.prefix + "api/smart";
